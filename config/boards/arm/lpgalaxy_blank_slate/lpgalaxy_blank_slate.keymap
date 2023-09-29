@@ -67,7 +67,17 @@
 
     keymap {
         compatible = "zmk,keymap";
-
+/* Qwerty
+┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┐
+|  Tab       Q        W        E        R        T        Y        U        I        O        P        Å
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|  Ctrl      A        S        D        F        G        H        J        K        L        Ö        Ä
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|  Shift     Z        X        C        V        B        N        M        ,        .        -       Enter
+├────────┼────────┼────────┼────────┼────────┼────────┴────────┼────────┼────────┼────────┼────────┼────────┤
+   Adjust   < >      Win       Alt    Lower         Space         Raise    Left     Down     Up       Right
+└────────┴────────┴────────┴────────┴────────┴─────────────────┴────────┴────────┴────────┴────────┴────────┘
+ */
         base_layer {
             label = "Base";
             bindings = <
@@ -89,45 +99,75 @@
 #endif
             >;
         };
-
+/* Lower (Num & Nav)
+┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┐
+|            Home    PgDn     PgUp     End                         7        8        9        /        \
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|            Left    Down     Up       Right                       4        5        6        *        "
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|  caps      Undo    Cut      Copy     Paste    Redo               1        2        3        +
+├────────┼────────┼────────┼────────┼────────┼────────┴────────┼────────┼────────┼────────┼────────┼────────┤
+|                                                     0
+└────────┴────────┴────────┴────────┴────────┴─────────────────┴────────┴────────┴────────┴────────┴────────┘
+ */
         nav_layer {
             label = "Nav";
             bindings = <
-&bt BT_CLR &trans     &trans     &trans      &trans          &trans       &trans     &trans         &trans      &trans     &trans     &kp DEL
-&trans     &trans     &trans     &trans      &trans          &trans       &trans     &kp LEFT       &kp DOWN    &kp UP     &kp RIGHT  &trans
-&trans     &bt BT(0)  &bt BT(1)  &bt BT(2)   &bt BT(3)       &bt BT(4)    &trans     &kp HOME       &kp PG_DN   &kp PG_UP  &kp END    &trans
+&trans     &kp HOME   &kp PG_DN     &kp PG_UP      &kp END         &trans      &trans     &kp N7       &kp N8      &kp N9     &kp KP_DIVIDE    &trans
+&trans     &kp LEFT   &kp DOWN      &kp UP         &kp RIGHT       &trans      &trans     &kp N4       &kp N5      &kp N6     &kp KP_MULTIPLY  &trans
+&trans     &kp C_PREV &kp C_VOL_DN  &kp C_VOL_UP   &kp C_NEXT      &kp C_PP    &trans     &kp N1       &kp N2      &kp N3     &kp KP_PLUS      &trans
 #ifdef TBLE_DUAL_2U
 &trans  &trans        &trans     &trans              &trans                    &trans       &trans         &trans &trans &trans
 #elif defined(TBLE_MIT)
-&trans  &trans        &trans     &trans      &trans                &trans             &trans      &trans   &trans &trans &trans
+&trans  &trans        &trans     &trans      &trans                &kp N0           &trans      &trans   &trans &trans &trans
 #else
 &trans  &trans        &trans     &trans      &trans          &trans       &trans    &trans  &trans         &trans &trans &trans
 #endif
             >;
         };
-
+/* Raise (Sym)
+┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┐
+|            §        @        £        $        €        ^        {        [        ]        }        \     SWE AltGr numrow (with custom keys in the blanks)
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|            !        "        #        ¤        %        &        /        (        )        =             SWE shift numrow
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|            ?        '        ¨        `        ´        *        \        <        >        _              Custom row
+├────────┼────────┼────────┼────────┼────────┼────────┴────────┼────────┼────────┼────────┼────────┼────────┤
+|
+└────────┴────────┴────────┴────────┴────────┴─────────────────┴────────┴────────┴────────┴────────┴────────┘
+ */
         num_layer {
             label = "Num";
             bindings = <
-&trans     &kp LBKT   &trans &trans &trans    &kp RBKT    &kp C_PREV    &kp N7     &kp N8      &kp N9       &trans     &trans
-&trans     &kp MINUS  &trans &trans &trans    &kp EQUAL   &kp C_NEXT    &kp N4     &kp N5      &kp N6       &trans     &trans
-&trans     &kp GRAVE  &trans &trans &trans    &kp BSLH    &trans        &kp N1     &kp N2      &kp N3       &trans     &trans
+&trans     &kp RA(N1) &kp RA(N2) &kp RA(N3) &kp RA(N4) &kp RA(N5) &kp RA(N6) &kp RA(N7) &kp RA(N8) &kp RA(N9) &kp RA(N0) &trans
+&trans     &kp LS(N1) &kp LS(N2) &kp LS(N3) &kp LS(N4) &kp LS(N5) &kp LS(N6) &kp LS(N7) &kp LS(N8) &kp LS(N9) &kp LS(N0) &trans
+&trans     &kp UNDER &kp NUHS &kp RA(NUBS) &kp LS(EQUAL) &kp EQUAL &kp KP_ASTERISK &kp RA(MINUS) &kp NUBS &kp PIPE2 &kp QMARK &trans
 #ifdef TBLE_DUAL_2U
-&trans  &trans       &trans     &kp N0              &trans                 &trans            &trans         &trans &trans &trans
+&trans  &trans       &trans     &trans             &trans                 &trans            &trans         &trans &trans &trans
 #elif defined(TBLE_MIT)
-&trans  &trans       &trans     &kp N0      &trans           &none            &trans        &kp DEL      &trans &trans &trans
+&trans  &trans       &trans     &trans     &trans           &none            &trans        &trans       &trans &trans &trans
 #else
-&trans  &trans       &trans     &kp N0      &trans    &none         &none     &kp ESC        &kp DEL      &trans &trans &trans
+&trans  &trans       &trans     &trans      &trans    &none         &none     &trans        &trans    &trans &trans &trans
 #endif
             >;
         };
-
+/* FN (FN,Bluetooth)
+┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┐
+|BT Clear   BT0      BT1      BT2      BT3      BT4                F7       F8       F9      F12
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|                                                                  F4       F5       F6      F11
+├────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┼────────┤
+|                                                                  F1       F2       F3      F10
+├────────┼────────┼────────┼────────┼────────┼────────┴────────┼────────┼────────┼────────┼────────┼────────┤
+|
+└────────┴────────┴────────┴────────┴────────┴─────────────────┴────────┴────────┴────────┴────────┴────────┘
+ */
         sym_layer {
             label = "Sym";
             bindings = <
-&trans     &kp LBRC   &kp AMPS   &kp STAR    &kp LPAR     &kp RBRC     &trans     &trans    &trans       &trans       &trans     &bootloader
-&trans     &kp COLON  &kp DLLR   &kp PRCNT   &kp CARET    &kp PLUS     &trans     &trans    &trans       &trans       &trans     &trans
-&trans     &kp TILDE  &kp EXCL   &kp AT      &kp HASH     &kp PIPE     &trans     &trans    &trans       &trans       &trans     &trans
+&bt BT_CLR &bt BT(0)  &bt BT(1)  &bt BT(2)   &bt BT(3)    &bt BT(4)    &trans     &kp F7    &kp F8       &kp F9       &kp F12     &bootloader
+&trans     &kp COLON  &kp DLLR   &kp PRCNT   &kp CARET    &kp PLUS     &trans     &kp F4    &kp F5       &kp F6       &kp F11     &trans
+&trans     &kp TILDE  &kp EXCL   &kp AT      &kp HASH     &kp PIPE     &trans     &kp F1    &kp F2       &kp F3       &kp F10     &trans
 #ifdef TBLE_DUAL_2U
 &trans &trans        &trans     &kp RPAR                &trans                    &trans       &trans         &trans &trans &trans
 #elif defined(TBLE_MIT)
