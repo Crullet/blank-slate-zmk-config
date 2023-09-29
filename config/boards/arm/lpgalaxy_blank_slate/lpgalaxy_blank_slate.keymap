@@ -54,8 +54,7 @@
 	};
     };
 
-// Conditional layer only when we have less thumb keys
-#ifdef TBLE_MIT 
+// Conditional layer 
     cond_layers {
         compatible = "zmk,conditional-layers";
 	tri {
@@ -63,7 +62,6 @@
 	    then-layer = <SYM_L>;
         };
     };
-#endif
 
     keymap {
         compatible = "zmk,keymap";
@@ -95,8 +93,7 @@
 #elif defined(TBLE_MIT)
  &kp LCTRL  &mo SYM_L   &kp LGUI  &kp LALT    &lt NAV_L BSPC     &kp SPACE                   &lt NUM_L DEL  &kp LEFT    &kp UP     &kp DOWN      &kp RIGHT
 #else
- &kp LCTRL  &mo SYM_L   &kp LGUI  &kp LALT    &lt NAV_L BSPC      &kp SPACE      &kp RET          &&lt NUM_L DEL
-l&kp LEFT    &kp UP     &kp DOWN      &kp RIGHT
+ &kp LCTRL  &mo SYM_L   &kp LGUI  &kp LALT    &lt NAV_L BSPC      &kp SPACE      &kp RET          &&lt NUM_L DEL &kp LEFT    &kp UP     &kp DOWN      &kp RIGHT
 #endif
             >;
         };
