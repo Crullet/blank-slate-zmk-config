@@ -91,9 +91,9 @@
 #ifdef TBLE_DUAL_2U
  &kp LCTRL  &kp LGUI   &kp LALT   &lt NAV_L BSPC         &shifty                        &kp SPACE                &lt NUM_L DEL   &kp LALT   &kp RGUI      &kp RSHIFT
 #elif defined(TBLE_MIT)
- &kp LCTRL  &mo SYM_L   &kp LGUI  &kp LALT    &lt NAV_L BSPC     &kp SPACE                   &lt NUM_L DEL  &kp LEFT    &kp UP     &kp DOWN      &kp RIGHT
+ &kp LCTRL  &mo SYM_L   &kp LGUI  &kp LALT    &lt NAV_L BSPC     &kp SPACE                   &lt NUM_L DEL  &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT
 #else
- &kp LCTRL  &mo SYM_L   &kp LGUI  &kp LALT    &lt NAV_L BSPC      &kp SPACE      &kp RET          &lt NUM_L DEL &kp LEFT    &kp UP     &kp DOWN      &kp RIGHT
+ &kp LCTRL  &mo SYM_L   &kp LGUI  &kp LALT    &lt NAV_L BSPC      &kp SPACE      &kp RET          &lt NUM_L DEL &kp LEFT    &kp DOWN     &kp UP      &kp RIGHT
 #endif
             >;
         };
@@ -119,7 +119,7 @@
 #elif defined(TBLE_MIT)
 &trans  &trans        &trans     &trans      &trans                &kp N0           &trans      &trans   &trans &trans &trans
 #else
-&trans  &trans        &trans     &trans      &trans          &trans       &trans    &trans  &trans         &trans &trans &trans
+&trans  &trans        &trans     &trans      &trans           &kp N0       &trans    &trans  &trans         &trans &trans &trans
 #endif
             >;
         };
